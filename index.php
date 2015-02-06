@@ -10,6 +10,7 @@
 //var_dump($_SERVER);
 define('INC_PATH',$_SERVER['DOCUMENT_ROOT'].'/2015/2015WWN01/config/');
 define('INC_CLAS',$_SERVER['DOCUMENT_ROOT'].'/2015/2015WWN01/include/');
+define('INC_VIEW',$_SERVER['DOCUMENT_ROOT'].'/2015/2015WWN01/views/');
 //var_dump(INC_PATH);
 require(INC_PATH.'Config.php');
 require(INC_CLAS.'connection.php');
@@ -19,14 +20,14 @@ var_dump($a);
 print '<br>';
 
 $conn =connection::connect();
-echo 'connection:'.$conn->dump_debug_info().'<br>';
+//echo 'connection:'.$conn->dump_debug_info().'<br>';
 $query = "select id,taal from ww.wwn";
-echo $query;
+//echo $query;
 
 $stmt = $conn->prepare($query);
 var_dump($stmt);
-echo 'test';
-
+//echo 'test';
+include(INC_VIEW.'taalkeuze.php');
 if ($stmt = $conn->prepare($query)) {
     $stmt->execute();
     $stmt->bind_result($field1, $field2);
